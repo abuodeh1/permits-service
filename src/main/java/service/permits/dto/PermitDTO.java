@@ -1,50 +1,33 @@
-package service.permits.model.permit;
+package service.permits.dto;
 
 import service.permits.lookup.Lookup;
-import service.permits.model.BaseEntity;
+import service.permits.model.permit.AMC;
+import service.permits.model.permit.Address;
+import service.permits.model.permit.Services;
+import service.permits.model.permit.Specifications;
 
-import javax.persistence.*;
+public class PermitDTO implements BaseDTO{
 
-//@Audited
-//@EntityListeners(AuditingEntityListener.class)
-@Entity(name="Permits")
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="NAME"))
-public class Permit implements BaseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
-//    @NaturalId
-//    @Column(unique = true, nullable = false, updatable = false, length = 100)
+    private int id;
 //    private String code;
     private String name;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="nature")
     private Lookup nature;
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="type")
     private Lookup type;
 
     private boolean enabled;
 
-    @Embedded
     private Address address;
-    @Embedded
     private Services services;
-    @Embedded
     private Specifications specifications;
-    @Embedded
-    private AMC amc;
 
-    public Permit() {}
+    private AMC amc;
 
     @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -85,7 +68,6 @@ public class Permit implements BaseEntity {
         return enabled;
     }
 
-    @Override
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }

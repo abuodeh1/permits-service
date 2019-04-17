@@ -9,7 +9,6 @@ import service.permits.model.permit.Specifications;
 public class PermitDTO implements BaseDTO{
 
     private int id;
-//    private String code;
     private String name;
 
     private Lookup nature;
@@ -31,14 +30,6 @@ public class PermitDTO implements BaseDTO{
     public void setId(int id) {
         this.id = id;
     }
-
-//    public String getCode() {
-//        return code;
-//    }
-//
-//    public void setCode(String code) {
-//        this.code = code;
-//    }
 
     public String getName() {
         return name;
